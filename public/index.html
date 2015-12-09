@@ -2,83 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link href="components/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link href="components/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet"></link>
 </head>
 <body>
-    <div class="buttons">
-        <div class="btn-toolbar">
-            <div class="input-append btn-group">
-                <button class="btn btn-success" data-action="drone" data-param="gotoroom"><i class="icon-play icon-white"></i> Go To Room</button>
-                <button class="btn btn-success" data-action="drone" data-param="takeoff"><i class="icon-play icon-white"></i> takeoff</button>
-                <button class="btn btn-warning" data-action="drone" data-param="land"><i class="icon-stop icon-white"></i> land</button>
-                <button class="btn btn-danger" data-action="drone" data-param="disableEmergency"><i class="icon-wrench icon-white"></i> recover</button>            
-            </div>
-            <div class="input-append btn-group">
-                <button class="btn dropdown-toggle" data-toggle="dropdown">Animations <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li data-action="animate" data-param="phiM30Deg"><a href="#">phiM30Deg</a></li>
-                    <li data-action="animate" data-param="phi30Deg"><a href="#">phi30Deg</a></li>
-                    <li data-action="animate" data-param="thetaM30Deg"><a href="#">thetaM30Deg</a></li>
-                    <li data-action="animate" data-param="theta30Deg"><a href="#">theta30Deg</a></li>
-                    <li data-action="animate" data-param="theta20degYaw200deg"><a href="#">theta20degYaw200deg</a></li>
-                    <li data-action="animate" data-param="theta20degYawM200deg"><a href="#">theta20degYawM200deg</a></li>
-                    <li data-action="animate" data-param="turnaround"><a href="#">turnaround</a></li>
-                    <li data-action="animate" data-param="turnaroundGodown"><a href="#">turnaroundGodown</a></li>
-                    <li data-action="animate" data-param="yawShake"><a href="#">yawShake</a></li>
-                    <li data-action="animate" data-param="yawDance"><a href="#">yawDance</a></li>
-                    <li data-action="animate" data-param="phiDance"><a href="#">phiDance</a></li>
-                    <li data-action="animate" data-param="thetaDance"><a href="#">thetaDance</a></li>
-                    <li data-action="animate" data-param="vzDance"><a href="#">vzDance</a></li>
-                    <li data-action="animate" data-param="wave"><a href="#">wave</a></li>
-                    <li data-action="animate" data-param="phiThetaMixed"><a href="#">phiThetaMixed</a></li>
-                    <li data-action="animate" data-param="doublePhiThetaMixed"><a href="#">doublePhiThetaMixed</a></li>
-                    <li data-action="animate" data-param="flipAhead"><a href="#">flipAhead</a></li>
-                    <li data-action="animate" data-param="flipBehind"><a href="#">flipBehind</a></li>
-                    <li data-action="animate" data-param="flipLeft"><a href="#">flipLeft</a></li>
-                    <li data-action="animate" data-param="flipRight"><a href="#">flipRight</a></li>
-                </ul>                   
-                    <input class="span1" id="duration" size="3" type="number" value="2" rel="tooltip" data-placement="bottom" title="Trigger animations. You can change the duration of an animation. It defaults to 2 seconds."> <span class="add-on"><i class="icon-time"></i></span>
-            </div>                
-        </div>    
+    <div id="header">
+        <div>LAZY GUYS...</div>
     </div>
-    <div id="batteryProgress" class="progress progress-success progress-striped" title="Battery status" rel="tooltip" data-placement="right">
-        <div class="bar" id="batterybar" style="width: 100%;"></div>
-    </div>       
-    <img id="cam" src="default.jpg" />
-    <div class="buttons">
-        <div class="btn-toolbar">
-            <div class="btn-group">
-                <button class="btn" data-action="move" data-param="front"><i class="icon-arrow-up"></i> Front</button>
-                <button class="btn" data-action="move" data-param="back"><i class="icon-arrow-down"></i> Back</button>
-            </div>
-            <div class="btn-group">
-                <button class="btn" data-action="move" data-param="left"><i class="icon-arrow-left"></i> Left</button>
-                <button class="btn" data-action="move" data-param="right"><i class="icon-arrow-right"></i> Right</button>
-            </div>
+    <div id="banner">
+    </div>
+    <!--<div id="action-container">
+        <div class="takeoff action"><a href="#"><img src="takeoff.png"></a></div>
+        <div class="land action"><a href="#"><img src="land.png"></a></div>
+        <div class="search action"><a href="#"><img src="search.png"></a></div>
+    </div>-->
+    <div class="row">
+      <div class="col-md-4 takeoff action"><a href="#" data-action="drone" data-param="takeoff"><img src="takeoff.png"></a></div>
+      <div class="col-md-4 land action"><a href="#" data-action="drone" data-param="land"><img src="land.png"></a></div>
+      <div class="col-md-4 search action"><a href="#" data-toggle="modal" data-target="#myModal"><img src="search.png"></a></div>
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Room Directory</h4>
+      </div>
+      <div class="modal-body">
+        <div class="dropdown">
+          <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-success btn-lg btn-block">
+            Select room to start mission (L5)
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dLabel">
+            <li><a href="#">Buona Vista</a></li>
+            <li><a href="#" data-action="drone" data-param="gotoroom">Common Wealth</a></li>
+            <li><a href="#">Changi</a></li>
+            <li><a href="#">Geyalng</a></li>
+          </ul>
         </div>
-        <div class="btn-toolbar">
-            <div class="btn-group">
-                <button class="btn" data-action="move" data-param="up"><i class="icon-chevron-up"></i> Up</button>
-                <button class="btn" class="btn" data-action="move" data-param="down"><i class="icon-chevron-down"></i> Down</button>
-            </div>
-            <div class="btn-group">
-                <button class="btn" data-action="move" data-param="clockwise"><i class="icon-refresh"></i> clockwise</button>
-                <button class="btn" data-action="move" data-param="counterClockwise"><i class="icon-refresh"></i> counter-clockwise</button>
-            </div>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
-    <div id="stats">     
-        <div>Battery: <span id="batteryPercentage">(Drone not connected)</span>%</div>
-        <div>Direction: <span id="clockwiseDegrees"></span>°</div>
-        <div>front/back: <span id="frontBackDegrees"></span>°</div>
-        <div>left/right: <span id="leftRightDegrees"></span>°</div>
-        <div>Altitude: <span id="altitudeMeters"></span>m</div>
-        <div>Velocity (x/y/z): <span id="xVelocity"></span> / <span id="yVelocity"></span> / <span id="zVelocity"></span></div>
-    </div>
-    <script src="components/jquery/jquery.js"></script>
+  </div>
+</div>
+<!--<script src="components/jquery/jquery.js"></script>
     <script src="/faye/client.js"></script>
     <script src="components/bootstrap/js/bootstrap.min.js"></script>    
-    <script src="/client.js"></script>
+    <script src="/client.js"></script>-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
+<style>
+body {
+    background-color: #1d1d1d;
+    margin: 0 auto;
+}
+#header {
+    display: inline-block;
+    width: 100%;
+    height: 55px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    box-shadow: 0 1px 2px #bbb;
+}
+#header div {
+    font-size: 26px;
+    margin: 13px;
+    font-weight: bold;
+}
+#banner {
+    background: url(banner.jpg);
+    background-repeat: no-repeat;
+    height: 855px;
+    width: 100%;
+    background-position: center;
+    background-color: #000;
+}
+.action {
+    position: relative;
+    text-align: center;
+    top: -70px;
+}
+.action img {
+    width: 40%;
+}
+.takeoff {
+
+}
+.land {
+
+}
+.search {
+
+}
+/*Bootstarp overrite*/
+ul.dropdown-menu {
+    width: 100%;
+    text-align: center;
+}
+</style>

@@ -4,8 +4,8 @@
   faye = require("faye");
   path = require("path");
   drone = require("ar-drone").createClient();
-  autonomy = require('ardrone-autonomy');
-  mission = autonomy.createMission();
+  //autonomy = require('ardrone-autonomy');
+  //mission = autonomy.createMission();
   drone.config('general:navdata_demo', 'TRUE');
   app = express();
   app.configure(function() {
@@ -45,14 +45,14 @@
       });*/
       return [
         drone.takeoff(),
-        drone.after(3000, function() {
+        /*drone.after(3000, function() {
           this.stop();
           this.front(0.1);
         }),
         drone.after(3000, function() {
           this.stop();
           this.back(0.1);
-        }),
+        }),*/
         drone.after(5000, function() {
           this.stop();
           this.land();
